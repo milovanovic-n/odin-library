@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  margin-bottom: 25px;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-style: italic;
+  color: #383838;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.addBookContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  min-width: 320px;
+  max-width: 550px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 3rem;
+}
+
+.inputContainer {
+  width: 90%;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 15px 0;
+  transition: all 0.3s;
+}
+
+.inputContainer:hover {
+  transform: scale(1.05);
+}
+
+.checkboxContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.checkboxContainer label {
+  margin-right: 40px;
+}
+
+.checkboxContainer input {
+  width: 20px;
+  height: 20px;
+}
+
+.label {
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: bold;
+}
+
+label sup {
+  font-size: .9rem;
+  color: rgb(230, 36, 36);
+}
+
+.inputContainer input {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  outline: none;
+}
+
+.inputContainer input:focus {
+  outline: 2px solid rgba(69, 125, 189, 0.8);
+}
+
+.addBookBtn {
+  margin-top: 30px;
+  width: 100px;
+  height: 35px;
+  background-color: rgba(49, 116, 192, 0.8);
+  color: #fffffA;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.addBookBtn:hover {
+  background-color: rgba(25, 84, 151, 0.8);
+  transform: scale(1.1);
+}
+
+.books {
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.16) 3px 0px 6px, rgba(0, 0, 0, 0.23) 3px 0px 6px;
+  margin-top: 25px;
+  padding: 35px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.book {
+  width: 30%;
+  padding: 1.5rem;
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-style: italic;
+  background: rgb(252,252,251);
+  background: linear-gradient(40deg, rgba(252,252,251,1) 0%, rgb(224, 218, 209) 100%);
+}
+
+.bookTitle, .bookAuthor, .bookPages, .bookRead {
+  padding: 18px 12px;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.bookTitle {
+  font-size: 1.6rem;
+}
+
+.bookAuthor {
+  font-weight: normal;
+  text-decoration: underline;
+  text-transform: capitalize;
+}
+
+.bookRead {
+  margin-top: 10px;
+  background-color: #ca5050;
+  border-radius: 8px;
+  padding: 8px 18px;
+}

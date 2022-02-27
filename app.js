@@ -1,5 +1,14 @@
+/* Add Books Button */
+const addBtn = document.querySelector("#addBookBtn");
+/* Display Books */
+const booksContainer = document.querySelector("#books");
 /* variable to store all books */
 const myLibrary = [];
+
+/* Function to create book html card */
+function createHtmlBook(book) {
+  
+}
 
 /* Book Class */
 class Book {
@@ -21,20 +30,13 @@ const addBook = () => {
   /* Check for all fields */
   if(!title || !author || !pages) return
 
-
-  console.log("Title", title)
-  console.log("Author", author)
-  console.log("Pages", pages)
-  console.log("isRead", isRead)
-
   /* Add Book */
   const newBook = new Book(title, author, pages, isRead);
 
   myLibrary.push(newBook);
 
-  console.log(myLibrary);
+  
 }
 
 /* Add Book Button */
-const addBtn = document.querySelector("#addBookBtn");
 addBtn.addEventListener("click", addBook);

@@ -10,26 +10,61 @@
 <body>
   <!-- Header -->
   <header class="header">
-    <div class="logo">Library</div>
+    <h1 class="logo">Library</h1>
   </header>
   <!-- Main -->
   <main>
-    <!-- Add Book Button-->
+    <!-- Add Book -->
     <div class="addBookContainer">
-      <label for="title">Title</label>
-      <input id="title" type="text" name="title" required>
-      <label for="author">Author</label>
-      <input id="author" type="text" name="author" required>
-      <label for="pages">Pages</label>
-      <input id="pages" type="number" step="1" name="pages" required>
-      <label for="isRead">Have you read it?</label>
-      <input id="isRead" type="checkbox" name="isRead">
-      <button id="addBookBtn">+ Add Book</button>
+      <div class="inputContainer">
+        <label class="label" for="title">Title<sup>*</sup></label>
+        <input id="title" type="text" name="title" required>
+      </div>
+      <div class="inputContainer">
+        <label class="label" for="author">Author<sup>*</sup></label>
+        <input id="author" type="text" name="author" required>
+      </div>
+      <div class="inputContainer">
+        <label class="label" for="pages">Pages<sup>*</sup></label>
+        <input id="pages" type="number" step="1" name="pages" required>
+      </div>
+      <div class="inputContainer checkboxContainer">
+        <label class="label" for="isRead">Have you read it?</label>
+        <input id="isRead" type="checkbox" name="isRead">
+      </div>
+
+      <button id="addBookBtn" class="addBookBtn">+ Add Book</button>
     </div>
 
     <!-- Books -->
-    <div class="books">
-   
+    <div id="books" class="books">
+      <div class="book">
+        <h2 class="bookTitle">My Book asdf asdf asd f asdf asd fas df</h2>
+        <h5 class="bookAuthor">Author: James bond</h5>
+        <p class="bookPages">Pages: <span>325</span></p>
+        <p class="bookRead">Not Read</p>
+      </div>
+
+      <div class="book">
+        <h2 class="bookTitle">My Book asdf asdf asd f asdf asd fas df</h2>
+        <h5 class="bookAuthor">Author: James bond</h5>
+        <p class="bookPages">Pages: <span>325</span></p>
+        <p class="bookRead">Not Read</p>
+      </div>
+
+      <div class="book">
+        <h2 class="bookTitle">My Book asdf asdf asd f asdf asd fas df</h2>
+        <h5 class="bookAuthor">Author: James bond</h5>
+        <p class="bookPages">Pages: <span>325</span></p>
+        <p class="bookRead">Not Read</p>
+      </div>
+
+      <div class="book">
+        <h2 class="bookTitle">My Book asdf asdf asd f asdf asd fas df</h2>
+        <h5 class="bookAuthor">Author: James bond</h5>
+        <p class="bookPages">Pages: <span>325</span></p>
+        <p class="bookRead">Not Read</p>
+      </div>
     </div>
   </main>
   <!-- Footer -->
