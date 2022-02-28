@@ -3,12 +3,22 @@ const addBtn = document.querySelector("#addBookBtn");
 /* Display Books Container */
 const booksContainer = document.querySelector("#books");
 /* variable to store all books */
-const myLibrary = [];
 
-/* Function to create book html card */
-function createHtmlBook(book) {
-  
-}
+
+const book1 = {
+  title: "Book One",
+  author: "Petar Kocic",
+  pages: 241,
+  isRead: false
+};
+
+const book2 = {
+  title: "Book Two",
+  author: "Petar Kocic",
+  pages: 241,
+  isRead: true
+};
+const myLibrary = [book1, book2];
 
 /* Book Class */
 class Book {
@@ -38,6 +48,9 @@ const addBook = () => {
   /* Create HTML for the book and add it to the page */
   const bookHtml = createHtmlBook(title.value, author.value, pages.value, isRead.checked);
   booksContainer.appendChild(bookHtml);
+
+  console.log("Book HTML",bookHtml);
+  console.log(newBook);
 
   /* Clear input fields */
   title.value = "";
@@ -82,3 +95,14 @@ function createHtmlBook(title, author, pages, isRead) {
 
   return bookWrapper;
 }
+
+/* Loop through the library array and display all books*/
+function displayBooks(myLibrary) {
+  myLibrary.forEach(book => {
+    const {title, author, pages, isRead} = book;
+    const appendBook = createHtmlBook(title, author, pages, isRead);
+    booksContainer.appendChild(appendBook);
+  });
+}
+
+displayBooks(myLibrary);

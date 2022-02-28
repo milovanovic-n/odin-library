@@ -133,7 +133,7 @@ label sup {
   border-radius: 10px;
 }
 
-.bookTitle, .bookAuthor, .bookPages, .bookRead {
+.bookTitle, .bookAuthor, .bookPages, .bookRead, .bookNotRead {
   padding: 18px 12px;
   text-align: center;
   font-size: 1.4rem;
