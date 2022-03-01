@@ -18,7 +18,7 @@ const book2 = {
   pages: 241,
   isRead: true
 };
-const myLibrary = [book1, book2];
+let myLibrary = [book1, book2];
 
 /* Book Class */
 class Book {
@@ -38,19 +38,22 @@ const addBook = () => {
   const isRead = document.querySelector("#isRead");
 
   /* Check for all fields */
-  if(!title.value || !author.value || !pages.value) return
+  if(!title.value || !author.value || !pages.value) return /* Return Error Message */
 
   /* Add Book */
   const newBook = new Book(title.value, author.value, pages.value, isRead.checked);
+  /* Check is this book already in our library array */
+  if(isInLybrary(newBook)) {
+    /* display error message */
+    console.log("Book already exists");
+    return
+  }
   /* Push the book to the library */
   myLibrary.push(newBook);
 
   /* Create HTML for the book and add it to the page */
   const bookHtml = createHtmlBook(title.value, author.value, pages.value, isRead.checked);
   booksContainer.appendChild(bookHtml);
-
-  console.log("Book HTML",bookHtml);
-  console.log(newBook);
 
   /* Clear input fields */
   title.value = "";
@@ -71,6 +74,14 @@ function createHtmlBook(title, author, pages, isRead) {
   bookTitle.classList.add("bookTitle");
   bookTitle.textContent = title;
 
+  const deleteBtn = document.createElement("span");
+  deleteBtn.textContent = "X";
+  deleteBtn.classList.add("deleteBtn");
+  deleteBtn.addEventListener("click", function(){
+    const parentElement = this.parentElement;
+    removeBook(title, parentElement);
+  });
+
   const bookAuthor = document.createElement("h5");
   bookAuthor.classList.add("bookAuthor");
   bookAuthor.textContent = `Author: ${author}`;
@@ -80,6 +91,7 @@ function createHtmlBook(title, author, pages, isRead) {
   bookPages.textContent = `Pages: ${pages}`;
 
   const bookRead = document.createElement("p");
+  bookRead.classList.add("isRead");
   if(isRead) {
     bookRead.classList.add("bookRead");
     bookRead.textContent = "Read";
@@ -88,12 +100,28 @@ function createHtmlBook(title, author, pages, isRead) {
     bookRead.textContent = "Not Read";
   }
 
+  bookWrapper.appendChild(deleteBtn);
   bookWrapper.appendChild(bookTitle);
   bookWrapper.appendChild(bookAuthor);
   bookWrapper.appendChild(bookPages);
   bookWrapper.appendChild(bookRead);
 
   return bookWrapper;
+}
+
+/* function to check is new book already in our library array */
+function isInLybrary(newBook) {
+  return myLibrary.some((book) => book.title === newBook.title);
+}
+
+/* Remove Book function */
+function removeBook() {
+  arguments[1].remove();
+  myLibrary = myLibrary.filter((book) => book.title !== arguments[0]);
+}
+
+function toggleRead() {
+  console.log("ASDF")
 }
 
 /* Loop through the library array and display all books*/
@@ -106,3 +134,10 @@ function displayBooks(myLibrary) {
 }
 
 displayBooks(myLibrary);
+
+/* CONTINUE HERE */
+/* Toggle Read status function */
+const toggleBtns = document.querySelectorAll(".isRead");
+for(let i = 0; i < toggleBtns.length; i++) {
+  toggleBtns[i].addEventListener("click", toggleRead);
+}

@@ -143,6 +143,29 @@ label sup {
   font-size: 1.6rem;
 }
 
+.deleteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: #ca5050;
+  background-color: #fffffA;
+  overflow: hidden;
+  font-weight: bold;
+  margin-left: auto;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.2s;
+}
+.deleteBtn:hover {
+  background-color: #ca5050;
+  color: #fffffA;
+  transform: scale(1.1);
+}
+
 .bookAuthor {
   font-weight: normal;
   text-decoration: underline;
