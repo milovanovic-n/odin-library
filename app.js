@@ -5,20 +5,6 @@ const booksContainer = document.querySelector("#books");
 /* variable to store all books */
 let myLibrary = [];
 
-const book1 = {
-  title: "Book One",
-  author: "Petar Kocic",
-  pages: 241,
-  isRead: false
-};
-
-const book2 = {
-  title: "Book Two",
-  author: "Petar Kocic",
-  pages: 241,
-  isRead: true
-};
-
 /* Book Class */
 class Book {
   constructor(title, author, pages, isRead) {
@@ -91,6 +77,7 @@ function createHtmlBook(title, author, pages, isRead) {
 
   const bookRead = document.createElement("p");
   bookRead.classList.add("isRead");
+  bookRead.onclick = toggleRead;
   if(isRead) {
     bookRead.classList.add("bookRead");
     bookRead.textContent = "Read";
@@ -110,7 +97,7 @@ function createHtmlBook(title, author, pages, isRead) {
 
 /* function to check is new book already in our library array */
 function isInLybrary(newBook) {
-  return myLibrary.some((book) => book.title === newBook.title);
+  return myLibrary.some((book) => book.title.toLowerCase() === newBook.title.toLowerCase());
 }
 
 /* Remove Book function */
@@ -129,22 +116,17 @@ function displayBooks(myLibrary) {
 }
 
 
-/**
- * 
- * Continue here
- */
 /* Toggle Read function */
 function toggleRead() {
   const title = this.parentElement.firstChild.textContent.toLowerCase();
   const book = myLibrary.find((book) => book.title === title);
-  book.isRead = !book.isRead
+  book.isRead = !book.isRead;
+  const isReadElement = this.parentElement.lastChild;
+  if(book.isRead) {
+    isReadElement.classList.replace("bookNotRead", "bookRead");
+    isReadElement.textContent = "Read";
+  } else {
+    isReadElement.classList.replace("bookRead", "bookNotRead");
+    isReadElement.textContent = "Not Read";
+  }
 }
-
-displayBooks(myLibrary);
-
-/* CONTINUE HERE */
-/* Toggle Read status function */
-// const toggleBtns = document.querySelectorAll(".isRead");
-// for(let i = 0; i < toggleBtns.length; i++) {
-//   toggleBtns[i].addEventListener("click", toggleRead);
-// }
