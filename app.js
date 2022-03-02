@@ -119,7 +119,11 @@ function displayBooks(myLibrary) {
 /* Toggle Read function */
 function toggleRead() {
   const title = this.parentElement.firstChild.textContent.toLowerCase();
-  const book = myLibrary.find((book) => book.title === title);
+  const book = myLibrary.find((book) => book.title.toLowerCase() === title);
+  if(!book) {
+    console.log("Sorry, the book is not found");
+    return;
+  }
   book.isRead = !book.isRead;
   const isReadElement = this.parentElement.lastChild;
   if(book.isRead) {
