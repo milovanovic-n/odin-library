@@ -3,7 +3,7 @@ const addBtn = document.querySelector("#addBookBtn");
 /* Display Books Container */
 const booksContainer = document.querySelector("#books");
 /* variable to store all books */
-
+let myLibrary = [];
 
 const book1 = {
   title: "Book One",
@@ -18,7 +18,6 @@ const book2 = {
   pages: 241,
   isRead: true
 };
-let myLibrary = [book1, book2];
 
 /* Book Class */
 class Book {
@@ -100,8 +99,8 @@ function createHtmlBook(title, author, pages, isRead) {
     bookRead.textContent = "Not Read";
   }
 
-  bookWrapper.appendChild(deleteBtn);
   bookWrapper.appendChild(bookTitle);
+  bookWrapper.appendChild(deleteBtn);
   bookWrapper.appendChild(bookAuthor);
   bookWrapper.appendChild(bookPages);
   bookWrapper.appendChild(bookRead);
@@ -120,10 +119,6 @@ function removeBook() {
   myLibrary = myLibrary.filter((book) => book.title !== arguments[0]);
 }
 
-function toggleRead() {
-  console.log("ASDF")
-}
-
 /* Loop through the library array and display all books*/
 function displayBooks(myLibrary) {
   myLibrary.forEach(book => {
@@ -133,11 +128,23 @@ function displayBooks(myLibrary) {
   });
 }
 
+
+/**
+ * 
+ * Continue here
+ */
+/* Toggle Read function */
+function toggleRead() {
+  const title = this.parentElement.firstChild.textContent.toLowerCase();
+  const book = myLibrary.find((book) => book.title === title);
+  book.isRead = !book.isRead
+}
+
 displayBooks(myLibrary);
 
 /* CONTINUE HERE */
 /* Toggle Read status function */
-const toggleBtns = document.querySelectorAll(".isRead");
-for(let i = 0; i < toggleBtns.length; i++) {
-  toggleBtns[i].addEventListener("click", toggleRead);
-}
+// const toggleBtns = document.querySelectorAll(".isRead");
+// for(let i = 0; i < toggleBtns.length; i++) {
+//   toggleBtns[i].addEventListener("click", toggleRead);
+// }
