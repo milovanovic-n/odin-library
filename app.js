@@ -5,6 +5,22 @@ const booksContainer = document.querySelector("#books");
 /* variable to store all books */
 let myLibrary = [];
 
+/* Local Storage */
+const restoreLocal = () => {
+  myLibrary = JSON.parse(localStorage.getItem("myLibrary"))
+  if(myLibrary) {
+    displayBooks(myLibrary)
+  } else {
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary))
+    myLibrary = [];
+  }
+};
+
+const saveLocal = () => {
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+};
+
+
 /* Book Class */
 class Book {
   constructor(title, author, pages, isRead) {
@@ -35,6 +51,8 @@ const addBook = () => {
   }
   /* Push the book to the library */
   myLibrary.push(newBook);
+  /* Save to Local Storage */
+  saveLocal(myLibrary)
 
   /* Create HTML for the book and add it to the page */
   const bookHtml = createHtmlBook(title.value, author.value, pages.value, isRead.checked);
@@ -92,7 +110,7 @@ function createHtmlBook(title, author, pages, isRead) {
   bookWrapper.appendChild(bookPages);
   bookWrapper.appendChild(bookRead);
 
-  return bookWrapper;
+  return bookWrapper
 }
 
 /* function to check is new book already in our library array */
@@ -104,6 +122,8 @@ function isInLybrary(newBook) {
 function removeBook() {
   arguments[1].remove();
   myLibrary = myLibrary.filter((book) => book.title !== arguments[0]);
+  /* Save To Local Storage */
+  saveLocal(myLibrary);
 }
 
 /* Loop through the library array and display all books*/
@@ -125,6 +145,8 @@ function toggleRead() {
     return;
   }
   book.isRead = !book.isRead;
+  /* Save to Local Storage */
+  saveLocal(myLibrary)
   const isReadElement = this.parentElement.lastChild;
   if(book.isRead) {
     isReadElement.classList.replace("bookNotRead", "bookRead");
@@ -134,3 +156,5 @@ function toggleRead() {
     isReadElement.textContent = "Not Read";
   }
 }
+
+restoreLocal();
