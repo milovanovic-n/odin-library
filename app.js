@@ -12,7 +12,6 @@ const restoreLocal = () => {
     displayBooks(myLibrary)
   } else {
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary))
-    myLibrary = [];
   }
 };
 
@@ -94,7 +93,6 @@ function createHtmlBook(title, author, pages, isRead) {
   bookPages.textContent = `Pages: ${pages}`;
 
   const bookRead = document.createElement("p");
-  bookRead.classList.add("isRead");
   bookRead.onclick = toggleRead;
   if(isRead) {
     bookRead.classList.add("bookRead");

@@ -45,11 +45,6 @@ main {
   flex-direction: column;
   justify-content: center;
   margin: 8px 0;
-  transition: all 0.3s;
-}
-
-.inputContainer:hover {
-  transform: scale(1.05);
 }
 
 .checkboxContainer {
@@ -100,12 +95,10 @@ label sup {
   font-weight: bold;
   border: none;
   cursor: pointer;
-  transition: all 0.3s;
 }
 
 .addBookBtn:hover {
   background-color: rgba(25, 84, 151, 0.8);
-  transform: scale(1.1);
 }
 
 .books {
@@ -183,10 +176,6 @@ label sup {
   height: 40px;
   min-width: 100px;
   cursor: pointer;
-  transition: all 0.2s;
-}
-.bookRead:hover, .bookNotRead:hover {
-  transform: scale(1.1);
 }
 
 .bookNotRead {
